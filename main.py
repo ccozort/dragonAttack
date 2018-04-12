@@ -1,7 +1,11 @@
-''' i want to use the python crash course example for space invaders
-I can write a recipe for brownies in here with no 
+'''
+I AM TOTALLY STEALING THIS FROM PYTHON CRASH COURSE ALIEN Invasion AND THEN MODIFYING TO USE MEDIEVAL SPRITES AND INCLUDE HITPOINTS AND POWER UPS
 
 '''
+#week 1 got ship to show up on screen
+#week 2 got ship to fire bullets
+#week 3 got bullets to die when off screen
+#this week i included removing bullet from memory and incorporating update function, all from python crash course
 import pygame
 import sys
 import game_functions as gf
@@ -16,7 +20,6 @@ def run_game():
     screen = pygame.display.set_mode((ai_settings.screen_width, ai_settings.screen_height))
     #initialize
     pygame.init()
-    screen = pygame.display.set_mode((ai_settings.screen_width,ai_settings.screen_height))
     pygame.display.set_caption("Alien Invasion")
     
     #set background color 
@@ -30,12 +33,7 @@ def run_game():
     while True:
         gf.check_events(ai_settings, screen, ship, bullets)
         ship.update()
-        bullets.update()
-
-        # get rid of offscreen bullets
-        for bullet in bullets.copy():
-            if bullet.rect.bottom <= 0:
-                bullets.remove(bullet)
+        gf.update_bullets(bullets)
         print(len(bullets))
         gf.update_screen(ai_settings, screen, ship, bullets)
         #Watch for keyboard and mouse events
