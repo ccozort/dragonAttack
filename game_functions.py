@@ -12,16 +12,16 @@ def check_keydown_events(event, ai_settings, screen, ship, bullets):
     if event.key == pygame.K_RIGHT:
         #move ship to right
         ship.moving_right = True
-        print("event k right is listening")
+        # print("event k right is listening")
     elif event.key == pygame.K_LEFT:
         ship.moving_left = True
-        print("event k left is listening")
+        # print("event k left is listening")
     elif event.key == pygame.K_SPACE:
         # create new bullet and add to group
         if len(bullets) < ai_settings.bullets_allowed:
             new_bullet = Bullet(ai_settings, screen, ship)
             bullets.add(new_bullet)
-        print("bullet key event is working dogg")
+        # print("bullet key event is working dogg")
 def check_keyup_events(event, ship):
     if event.key == pygame.K_RIGHT:
         ship.moving_right = False
