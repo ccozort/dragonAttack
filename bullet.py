@@ -24,10 +24,10 @@ class Bullet(Sprite):
         self.y -= self.speed_factor
         # update rect pos
         self.rect.y = self.y
-        print("bullet update is calling")
+        # print("bullet update is calling")
     
     def draw_bullet(self):
         # draw bullet on screen
         pygame.draw.rect(self.screen, self.color, self.rect)
-        print("draw bullet is calling")
+        # print("draw bullet is calling")
         

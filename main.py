@@ -13,6 +13,7 @@ import game_functions as gf
 from pygame.sprite import Group
 from settings import Settings
 from ship import Ship
+from enemy import Enemy
 
 def run_game():
     #initialize pygame, settings, and screen object
@@ -28,23 +29,16 @@ def run_game():
     ship = Ship(ai_settings, screen)
     # make a group to store bullets
     bullets = Group()
+
+    # make an enemy
+    enemy = Enemy(ai_settings, screen)
     
     #Start the main loop for the run_game
     while True:
-        gf.check_events(ai_settings, screen, ship, bullets)
+        gf.check_events(ai_settings, screen, ship,bullets)
         ship.update()
         gf.update_bullets(bullets)
-        print(len(bullets))
-        gf.update_screen(ai_settings, screen, ship, bullets)
-        #Watch for keyboard and mouse events
-        # for event in pygame.event.get():
-        #     if event.type == pygame.QUIT:
-        #         sys.exit()
-        #redraw screen each pass through the loop
-        # screen.fill(ai_settings.bg_color)    
-        #Redraw ship each pass through loop
-        # ship.blitme()
-
+        gf.update_screen(ai_settings, screen, ship, enemy, bullets)
         #Make the most recently drawn screen visible.
         pygame.display.flip()
 
