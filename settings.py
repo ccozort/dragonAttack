@@ -10,3 +10,7 @@ class Settings():
         self.bullet_height = 15
         self.bullet_color = 60, 60, 60
         self.bullets_allowed = 7
+        # Turret settingsself.bullet_speed_factor = 1
+        self.turret_width = 10
+        self.turret_height = 20
+        self.turret_color = 200, 60, 60

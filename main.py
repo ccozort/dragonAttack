@@ -13,6 +13,7 @@ import game_functions as gf
 from pygame.sprite import Group
 from settings import Settings
 from ship import Ship
+from turret import Turret
 from enemy import Enemy
 
 def run_game():
@@ -27,8 +28,13 @@ def run_game():
     bg_color = (230, 230, 230)
     #CREATE A SHIP  
     ship = Ship(ai_settings, screen)
+    turret = Turret(ai_settings, screen, ship)
     # make a group to store bullets
     bullets = Group()
+    enemies = Group()
+    # create fleet
+
+    gf.create_fleet(ai_settings, screen, enemies)
 
     # make an enemy
     enemy = Enemy(ai_settings, screen)
@@ -38,7 +44,7 @@ def run_game():
         gf.check_events(ai_settings, screen, ship,bullets)
         ship.update()
         gf.update_bullets(bullets)
-        gf.update_screen(ai_settings, screen, ship, enemy, bullets)
+        gf.update_screen(ai_settings, screen, ship, enemies, bullets)
         #Make the most recently drawn screen visible.
         pygame.display.flip()
 
