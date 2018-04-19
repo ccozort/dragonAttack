@@ -22,7 +22,8 @@ from background import Background
 def run_game():
     #initialize pygame, settings, and screen object
     ai_settings = Settings()
-    background = Background()
+    background = Background('images/background.png',(0,0))
+    
     screen = pygame.display.set_mode((ai_settings.screen_width, ai_settings.screen_height))
     #initialize
     pygame.init()
@@ -48,15 +49,13 @@ def run_game():
     current_mouse = pygame.mouse.get_pos()
     #Start the main loop for the run_game
 
-
+    screen.blit(background.image, background.rect)
     while True:
         gf.check_events(ai_settings, screen, ship,bullets)
-        screen.blit(background, (0,0))
         ship.update()
         gf.update_bullets(bullets)
         gf.update_screen(ai_settings, screen, ship, enemies, bullets)
         # print(pygame.mouse.get_pos())
-        
         if pygame.mouse.get_pos() != current_mouse:
             current_mouse = pygame.mouse.get_pos()
             string_mouse = str(current_mouse)

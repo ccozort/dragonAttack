@@ -107,7 +107,7 @@ def check_events(ai_settings, screen, ship, bullets):
             check_keyup_events(event, ship)
 def loadify(img):
     return pygame.image.load(img).convert_alpha()
-def update_background()    
+    
 def update_screen(ai_settings, screen, ship, enemies, bullets):
     #Update images and flip to new screen
     #redraw each loop
