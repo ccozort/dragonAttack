@@ -1,6 +1,6 @@
 '''
 I AM TOTALLY STEALING THIS FROM PYTHON CRASH COURSE ALIEN Invasion AND THEN MODIFYING TO USE MEDIEVAL SPRITES AND INCLUDE HITPOINTS AND POWER UPS
-
+Eric Matthes wrote Python Crash Course and it rules
 '''
 #week 1 got ship to show up on screen
 #week 2 got ship to fire bullets
@@ -15,14 +15,10 @@ from settings import Settings
 from ship import Ship
 from turret import Turret
 from enemy import Enemy
-from background import Background
-
-
 
 def run_game():
     #initialize pygame, settings, and screen object
     ai_settings = Settings()
-    background = Background('images/background.png',(0,0))
     
     screen = pygame.display.set_mode((ai_settings.screen_width, ai_settings.screen_height))
     #initialize
@@ -49,10 +45,11 @@ def run_game():
     current_mouse = pygame.mouse.get_pos()
     #Start the main loop for the run_game
 
-    screen.blit(background.image, background.rect)
+    
     while True:
         gf.check_events(ai_settings, screen, ship,bullets)
         ship.update()
+        turret.update(ship)
         gf.update_bullets(bullets)
         gf.update_screen(ai_settings, screen, ship, enemies, bullets)
         # print(pygame.mouse.get_pos())

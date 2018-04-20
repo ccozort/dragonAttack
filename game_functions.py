@@ -10,7 +10,7 @@ from bullet import Bullet
 from turret import Turret
 from enemy import Enemy
 from background import Background
-
+background = Background('images/background.png',(0,0))
 
 
 black = (0,0,0)
@@ -112,13 +112,14 @@ def update_screen(ai_settings, screen, ship, enemies, bullets):
     #Update images and flip to new screen
     #redraw each loop
     # screen.fill(ai_settings.bg_color)
-    
+    screen.blit(background.image, background.rect)
     # redraw all bullets behind ship and aliens
     for bullet in bullets.sprites():
         bullet.draw_bullet()
     ship.blitme()
     #draw turret
     t = Turret(ai_settings,screen,ship)
+    t.update(ship)
     t.draw_turret()
     enemies.draw(screen)
     # enemy.blitme()
